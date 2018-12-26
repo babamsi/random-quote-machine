@@ -37,7 +37,7 @@ class App extends Component {
 
   } 
   render() {
-    let k = this.state.xikmado ? Math.floor(Math.random() * this.state.xikmado.length) + 1: null
+    
     return (
       <div>
         <h1 className="tc animated bounce delay-1s">Random Quote Machine</h1>

@@ -6,9 +6,9 @@ import './icons.css'
 
 const icons = (props) => (
     <div className='Icon animated bounceInDown delay-1s'>
-        <img src={linkel}/>
-        <img src={Git}/>
-        <img src={Google}/>
+        <img src={linkel} alt="my-linkeldn"/>
+        <img src={Git} alt="my-github"/>
+        <img src={Google} alt="google"/>
     </div>
 )
 

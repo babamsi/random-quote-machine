@@ -2,7 +2,6 @@
   "name": "quotemachine",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://suhaybcabdulahi.github.io/random-quote-machine",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
@@ -13,8 +12,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

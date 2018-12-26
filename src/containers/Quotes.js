@@ -6,6 +6,7 @@ import { xikmadi } from '../xikmadi'
 import Icons from '../components/Icons/Icons'
 import Scroll from '../components/Scroll/Scroll'
 import './Quote.css';
+import axios from '../axios-instance';
 
 class App extends Component {
   
@@ -18,8 +19,12 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({xikmado: xikmadi})
-    
-    
+    axios.get('https://suhayb-react-burger.firebaseio.com/ingredients.json')
+        .then(response => {
+           console.log(response.data)
+        }).catch(err => {
+          console.log(err)
+      })
   }
    clickHandlerMethod = () => {
     const lastUp = this.state.xikmado

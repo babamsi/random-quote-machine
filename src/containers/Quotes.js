@@ -34,13 +34,14 @@ class Machine extends Component {
   }
    clickHandlerMethod = () => {
     const lastUp = this.state.xikmado;
+    
     let o = []
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 18; i++) {
       const j = 'Quote' + i.toString();
-      console.log(j)
+    
       o.push(lastUp[j])
     }
-    console.log(o)
+    
     
     this.setState({current: o[Math.floor(Math.random() * o.length)]})
     
@@ -54,7 +55,7 @@ class Machine extends Component {
     let filtred = this.state.xikmado ? Object.keys(this.state.xikmado).filter(igkey => {
       return this.state.xikmado[igkey].quote.toLowerCase().includes(this.state.text.toLowerCase())
     }): []
-    console.log(filtred)
+    
     return (
       <div>
         <h1 className="tc animated bounce delay-1s">Random Quote Machine</h1>

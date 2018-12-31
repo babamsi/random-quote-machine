@@ -1,0 +1,13 @@
+.Scroll {
+    border: 1px solid black;
+    width: 80%; 
+    height:90vh;
+    margin: 10px auto;
+    overflow-y: scroll;
+}
+
+@media (max-width: 500px) {
+    .Scroll {
+        height: 65vh;
+    }
+}

@@ -4,12 +4,12 @@ import me from '../../assets/Images/IMG-20181126-WA0007.jpg'
 class AboutMe extends Component {
     render() {
         return(
-            <div className="tc" style={{width: "99vw", height: "100vh", background: "#eee"}}>
+            <div className="tc" style={{width: "99vw", height: "100%", background: "#eee"}}>
                 <div className="animated lightSpeedIn delay-2s">
                     <img 
                         src={me} 
                         alt="SuhaybCabdulahi" 
-                        width="15%" 
+                        width="35%" 
                         height="50%" 
                         style={{paddingBottom:"0.5em", marginTop: "20vh", borderRadius: "10px"}} 
                         />
@@ -21,12 +21,14 @@ class AboutMe extends Component {
                     <p>I am a junior full-stack web-developer and my nationality is somalia</p>
                 </div>
                 <br/>
-                <i className="material-icons">
-                    dialer_sip
-                </i> 00252616989940 <br/>
-                <i className="material-icons">
-                    email
-                </i> sabkacade40@gmail.com
+                    <div className="animated zoomInLeft delay-3s" style={{marginBottom: "40px"}}>
+                    <i className="material-icons">
+                        dialer_sip
+                    </i> 00252616989940 <br/>
+                    <i className="material-icons">
+                        email
+                    </i> sabkacade40@gmail.com
+                    </div>
             </div>
         )
     }

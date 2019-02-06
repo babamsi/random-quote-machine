@@ -4,14 +4,14 @@ import me from '../../assets/Images/IMG-20181126-WA0007.jpg'
 class AboutMe extends Component {
     render() {
         return(
-            <div className="tc" style={{width: "99vw", height: "100%", background: "#eee"}}>
+            <div className="tc" style={{width: "99vw", height: "100%", background: "#eee", margin: '0', padding: '0'}}>
                 <div className="animated lightSpeedIn delay-2s">
                     <img 
                         src={me} 
                         alt="SuhaybCabdulahi" 
                         width="35%" 
                         height="50%" 
-                        style={{paddingBottom:"0.5em", marginTop: "20vh", borderRadius: "10px"}} 
+                        style={{paddingBottom:"0.5em", marginTop: "20vh", borderRadius: "15px"}} 
                         />
                         <br/><i>"SuhaybCabdulahi"</i>
                     </div>

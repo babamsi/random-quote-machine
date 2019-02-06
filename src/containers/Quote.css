@@ -5,11 +5,20 @@
   src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
 }
 * {
-  font-family: 'SEGA LOGO FONT';
+  font-family: 'Kelly Slab', cursive;
 }
 h1 {
   animation-duration: 3s;
   animation-delay: 2s;
   animation-iteration-count: 7;
   margin-top: 20px;
+}
+.Phone {
+    font-size: 70px;
+}
+
+@media (max-width: 500px) {
+  .Phone {
+    font-size: 40px;
+  }
 }

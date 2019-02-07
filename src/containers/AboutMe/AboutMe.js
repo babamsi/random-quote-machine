@@ -16,9 +16,10 @@ class AboutMe extends Component {
                         <br/><i>"SuhaybCabdulahi"</i>
                     </div>
                 <div className="animated slideInLeft delay-3s" style={{fontWeight: "700", lineHeight: "1.2em", fontSize: "25px"}}>
-                    <p>Hello, that is me   my Full-name is Suhayb Abdulwahid Abdullahi and I am the creator of this greate project 
+                    <p>- Hello, that is me   my Full-name is Suhayb Abdulwahid Abdullahi and I am the creator of this great project 
                     </p>
-                    <p>I am a junior full-stack web-developer and my nationality is somalia</p>
+                    <p>- I am a junior full-stack web-developer and my nationality is somalia</p>
+                    <p>- I made this project with React and Redux along with React-Router-Dom</p>
                 </div>
                 <br/>
                     <div className="animated zoomInLeft delay-3s" style={{marginBottom: "40px"}}>

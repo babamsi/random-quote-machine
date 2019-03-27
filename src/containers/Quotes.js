@@ -4,87 +4,51 @@ import Xikmad from '../components/Xikmad/Xikmad'
 import Button from '../components/Button/Button'
 import Icons from '../components/Icons/Icons'
 import Scroll from '../components/Scroll/Scroll'
+import Particles from 'react-particles-js'
 import ErrorBoundry from './ErrorBoundry/ErrorBoundry'
 import axios from '../axios-instance';
 import Spinner from '../components/Spinner/Spinner'
 import withError from '../components/withError/withError'
-import InputField from '../components/InputField/InputField'
-import TemporaryDrawer from '../components/Drawer/Drawer'
-import * as actionType from './../store/action'
+import * as actions from '../store/actions/index'
+import Bar from '../components/AppBar/AppBar'
 import { connect } from 'react-redux'
-
 import './Quote.css';
 
 class Machine extends Component {
   
   state = {
-      starred: [],
       current: '',
       currentBackgroud: '',
-      text: ''
+      text: '',
+      lang: ''
   }
   
 
   componentDidMount() {
-    //this.setState({xikmado: xikmadi})
-    // axios.get('Quotes.json')
-    //     .then(response => {
-    //       //console.log(Object.keys(response.data.Quote1).map(igkey => response.data.Quote1[igkey]))
-    //       this.setState({xikmado: response.data})
-           
-    //     }).catch(err => {
-    //       console.log(err)
-    //   })
     this.props.req()
   }
-  onStarredHandler = (text) => {
-      
-      //  const filtEr = Object.keys(this.props.xikmado).map(igkey => {
-      //    return this.props.xikmado[igkey]
-      //  }).filter(item => {
-      //    return item.quote === text
-      //  }).reduce((sum, ele) => {
-      //    return ele
-      //  }, 0)
-      //  let realFilter = this.state.starred.filter(elem => {
-      //    return elem === filtEr.quote
-      //  })
-      //  if (realFilter.length < 1) {
-      //   this.setState(prevState => {
-      //     return {
-      //       starred: prevState.starred.concat(filtEr.quote)
-      //     }
-      //   })
-      //  } else {
-      //    const data = this.state.starred.filter(quote => {
-      //      return quote !== text
-      //    })
-      //    this.setState({starred: data})
-      //  }
-       
-      //  const starred = [...this.state.starred]
-      //  const duplicate = starred.filter(txt => txt === text);
-      //  if (duplicate.length < 1) {
-          
-      //     return this.setState(prevState => {
-      //       return {
-      //         starred: prevState.starred.concat(text)
-      //       }
-      //     })
-      //  }
-      //   const rem = starred.filter(txt => txt !== text);
-      //   if(rem.length >= 0) {
-      //     return this.setState({starred: rem})
-      //   }
-      
-      // console.log(this.state.starred)
 
-    }
+   onLangChange = () => {
+     setTimeout(() => {
+      if (this.props.lang !== 'English') {
+        this.props.history.push("/" + this.props.lang)
+     } else {
+         this.props.history.push("/")
+     }
+     }, 200)
+     
+   }
+
+   changeMode = () => {
+     this.props.onChangeToModes();
+     document.querySelector('body').classList.toggle('dark')
+   }
+
    clickHandlerMethod = () => {
     const lastUp = this.props.xikmado;
     
     let o = []
-    for (let i = 1; i < 18; i++) {
+    for (let i = 1; i < 22; i++) {
       const j = 'Quote' + i.toString();
     
       o.push(lastUp[j])
@@ -99,37 +63,56 @@ class Machine extends Component {
 
   } 
   render() {
-    
-   // console.log(this.state.another[0])
     let filtred = this.props.xikmado ? Object.keys(this.props.xikmado).filter(igkey => {
       return this.props.xikmado[igkey].quote.toLowerCase().includes(this.state.text.toLowerCase())
-    }): []
+    }): ["Not Found"]
+    
     
     return (
+      <React.Fragment>
+      <Particles
+                    className="particles"
+                    params={{
+                        "particles": {
+                            "number": {
+                                "value": 90
+                            },
+                            "size": {
+                                "value": 5
+                            }
+                        },
+                        "interactivity": {
+                            "events": {
+                                "onhover": {
+                                    "enable": false,
+                                    "mode": "repulse"
+                                }
+                            }
+                        }
+                }} />
       <div>
+        <Bar 
+          saveStarred={() => this.props.history.push('/starred')} 
+          now="Starred"
+          mySelf={() => this.props.history.push('/About')}
+          onLangChange={(data) => {this.props.onLangChange(data); this.onLangChange()}}
+          items={['Somali', 'Arabic']}
+          lang={this.props.lang}
+          onTextChange={(text) => {
+            this.setState({text: text});
+            this.setState({current: filtred.length > 0 ? this.props.xikmado[filtred[0]] : "Not Found"});
+            setTimeout(() => {
+              this.setState({currentBackgroud: this.state.current && this.state.current.background})
+            }, 100)
+          }}
+          value={this.state.text}
+          dark={this.props.dark}
+          chaneMode={this.changeMode}/>
         <h1 className="tc animated bounce delay-1s">Random Quote Machine</h1>
-    
           {this.props.xikmado ?
           <React.Fragment>
-          <div style={{float: 'right', marginBottom: "20px"}}> 
-          <TemporaryDrawer 
-            saveStarred={() => this.props.history.push('/starred')} 
-            now="Starred"
-            mySelf={() => this.props.history.push('/AboutMe')}/>
-          </div>
-
-          <InputField 
-              onTextChange={text => {
-                // this.setState({current: this.state.xikmado[filtred].quote})
-                this.setState({text: text})
-                this.setState({current: this.props.xikmado[filtred[0]]})
-              }}
-              value={this.state.text}/>
-
             <ErrorBoundry>
               <div className="tc App" >
-              
-              
               <Scroll currentBackgroudn={this.state.currentBackgroud}>
                 <Modal>
                   <Xikmad 
@@ -138,8 +121,11 @@ class Machine extends Component {
                     icon="stars"
                     starred={this.props.starred}
                     clicked={this.props.star}/>
-                  { this.state.current.length <= 0 ? <Button click={this.clickHandlerMethod}>Start it</Button>:
-                    <Button click={this.clickHandlerMethod}>New One</Button>
+                    {/* <Audio /> */}
+                  { this.state.current ? 
+                    <Button click={this.clickHandlerMethod}>New One</Button>:
+                    <Button click={this.clickHandlerMethod}>Start it</Button>
+                    
                   }
                   <Icons />
                 </Modal>
@@ -151,17 +137,22 @@ class Machine extends Component {
           }
           
       </div>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  xikmado: state.xikmado,
-  starred: state.starred
+  xikmado: state.quote.xikmado,
+  starred: state.quote.starred,
+  lang: state.lang.lang.textContent,
+  dark: state.quote.dark
 })
 const mapDispatchToProps = (dispatch) => ({
-  req: () => actionType.onquoteRequest(dispatch),
-  star: (text) => dispatch({type: actionType.STARRED, payload: text})
+  req: () => actions.onquoteRequest(dispatch),
+  star: (text) => dispatch(actions.starred(text)),
+  onLangChange: (lang) => dispatch(actions.langChange(lang)),
+  onChangeToModes: () => dispatch(actions.darkMode())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withError(Machine, axios))

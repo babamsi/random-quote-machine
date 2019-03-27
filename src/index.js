@@ -6,10 +6,18 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import 'tachyons';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { reducerStar } from './store/reducer'
+import { createStore, combineReducers, compose, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
+import { reducerStar } from './store/reducers/quote'
+import reducerLang from './store/reducers/lang'
 
-const store = createStore(reducerStar)
+const rootReducer = combineReducers({
+    quote: reducerStar,
+    lang: reducerLang
+})
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 let app = (
     <BrowserRouter>

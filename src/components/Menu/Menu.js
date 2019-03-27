@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import Language from '@material-ui/icons/Language';
 
 class SimpleMenu extends React.Component {
   state = {
@@ -32,7 +32,14 @@ class SimpleMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          Select a Language
+        {
+          this.props.join ? <p>Join Us</p>:
+          <div style={{width:"50%", height: "100%", cursor: "pointer", margin: "12px 10px 0 10px"}}>
+          <Language 
+            style={{width: "40px", height: "100%", cursor: "pointer"}}
+            titleAccess="Change Language"/>
+            </div>
+        }
         </Button>
         <Menu
           id="simple-menu"
@@ -44,7 +51,9 @@ class SimpleMenu extends React.Component {
             this.props.items.map(item => {
                 return <MenuItem 
                     onClick={this.handleClose}
-                    key={item}><p>{item}</p></MenuItem>
+                    key={item}><p onClick={(event) => {
+                      this.props.onLangChange(event.target)
+                    }}>{item}</p></MenuItem>
             })
         }
         </Menu>

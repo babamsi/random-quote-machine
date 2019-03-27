@@ -1,0 +1,9 @@
+.Bar {
+    display: flex;
+    align-content: flex-end;
+    flex-direction: row-reverse;
+    width: 50%;
+    height: 100%;
+    margin-left: auto;
+    color: black;
+}

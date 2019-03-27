@@ -2,8 +2,11 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    
 }
 
 .Icon img {
-    width: 80%;
+    width: 100px;
+    margin-top: auto;
+    margin-bottom: 10px;
 }

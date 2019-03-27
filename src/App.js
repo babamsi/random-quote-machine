@@ -3,6 +3,8 @@ import Quotes from './containers/Quotes'
 import Starred from './containers/Starred/Starred'
 import { Route, Switch} from 'react-router-dom'
 import AboutMe from './containers/AboutMe/AboutMe'
+import Arabic from './containers/ArabicQuotes/ArabicQuotes'
+import Somali from './containers/SomaliQuotes/SomaliQuotes'
 import './App.css'
 
 class App extends Component {
@@ -14,7 +16,9 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Quotes}/>
                          <Route path="/starred" component={Starred} />
-                         <Route path="/AboutMe" component={AboutMe} />
+                         <Route path="/About" component={AboutMe} />
+                         <Route path="/Arabic" component={Arabic} />
+                         <Route path="/Somali" component={Somali} />
                     </Switch>
                 </div>
             

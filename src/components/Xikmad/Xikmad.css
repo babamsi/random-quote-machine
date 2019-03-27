@@ -4,6 +4,9 @@
     font-family: 'Shrikhand', cursive;
     
 }
+.Arabic {
+    font-family: 'Lateef', cursive;
+}
 @media (min-width: 500px) {
     .Xikmad {
         font-size: 2.25rem;

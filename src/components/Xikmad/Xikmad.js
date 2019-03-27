@@ -10,7 +10,7 @@ const xikmad = (props) => (
          {props.xikmad ? "stars" : ""}
         </i>
         </div>
-        <div className="Xikmad animated bounce delay-1s">
+        <div className="Xikmad animated bounce delay-1s Arabic">
             {props.xikmad}
         </div>
     </React.Fragment>

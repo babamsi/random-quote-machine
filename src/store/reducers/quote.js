@@ -1,10 +1,11 @@
-import * as actionType from './action';
+import * as actionType from '../actions/actionTypes';
 
 const initialStateStar = {
     xikmado: null,
     isPending: false,
     err: '',
-    starred: []
+    starred: [],
+    dark: false
 }
 
 export const reducerStar = (state = initialStateStar, action = {}) => {
@@ -41,6 +42,11 @@ export const reducerStar = (state = initialStateStar, action = {}) => {
                 return {
                     ...state,
                     err: action.payload
+                }
+            case actionType.DARK_MODE: 
+                return {
+                    ...state,
+                    dark: !state.dark
                 }
             default:
                 return state

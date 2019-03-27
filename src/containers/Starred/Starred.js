@@ -1,17 +1,36 @@
 import React, { Component } from 'react'
-import Drawer from '../../components/Drawer/Drawer'
+import * as actions from '../../store/actions/index'
 import { connect } from 'react-redux'
+import Bar from '../../components/AppBar/AppBar'
 
 class Starred extends Component {
+    onLangChange = () => {
+        setTimeout(() => {
+            if (this.props.lang !== 'English') {
+                this.props.history.push("/" + this.props.lang)
+             } else {
+                 this.props.history.push("/")
+             }
+        }, 200)
+      }
+      changeMode = () => {
+        this.props.onChangeModes();
+        document.querySelector('body').classList.toggle('dark')
+      }
     render() {
         return (
             <div className="tc">
-                <div style={{float: 'right', marginBottom: "20px"}}> 
-                    <Drawer 
-                        saveStarred={() => this.props.history.push('/')} 
-                        now="HOME"
-                        mySelf={() => this.props.history.push('/AboutMe')}/>
-                </div>
+            <Bar 
+                saveStarred={() => this.props.history.push('/')} 
+                now="Home"
+                mySelf={() => this.props.history.push('/About')}
+                onLangChange={(data) => {this.props.onLangChange(data); this.onLangChange()}}
+                items={['Somali', 'Arabic']}
+                lang={this.props.lang}
+                title="Goto Home"
+                disabled={true}
+                chaneMode={this.changeMode}
+                dark={this.props.dark}/>
                 <h1>Here's your favorite Quotes</h1>
                 {
                     this.props.starred.map(quote => {
@@ -24,8 +43,14 @@ class Starred extends Component {
 }
 
 const mapStateToProps = state => ({
-    xikmado: state.xikmado,
-    starred: state.starred
+    xikmado: state.quote.xikmado,
+    starred: state.quote.starred,
+    lang: state.lang.lang.textContent,
+    dark: state.quote.dark
+})
+const mapDispatchToProps = dispatch => ({
+    onLangChange: (lang) => dispatch(actions.langChange(lang)),
+    onChangeModes: () => dispatch(actions.darkMode())
 })
 
-export default connect(mapStateToProps)(Starred)
+export default connect(mapStateToProps,mapDispatchToProps)(Starred)

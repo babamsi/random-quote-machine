@@ -5,6 +5,8 @@ import { Route, Switch} from 'react-router-dom'
 import AboutMe from './containers/AboutMe/AboutMe'
 import Arabic from './containers/ArabicQuotes/ArabicQuotes'
 import Somali from './containers/SomaliQuotes/SomaliQuotes'
+import SignIn from './components/SignIn/SignIn'
+import Register from './components/Register/Register'
 import './App.css'
 
 class App extends Component {
@@ -15,10 +17,12 @@ class App extends Component {
                 <div style={{height: '100%'}}>
                     <Switch>
                         <Route path="/" exact component={Quotes}/>
-                         <Route path="/starred" component={Starred} />
-                         <Route path="/About" component={AboutMe} />
-                         <Route path="/Arabic" component={Arabic} />
-                         <Route path="/Somali" component={Somali} />
+                        <Route path="/SignIn" component={SignIn}/>
+                        <Route path="/SignUp" component={Register}/>
+                        <Route path="/starred" component={Starred} />
+                        <Route path="/About" component={AboutMe} />
+                        <Route path="/Arabic" component={Arabic} />
+                        <Route path="/Somali" component={Somali} />
                     </Switch>
                 </div>
             

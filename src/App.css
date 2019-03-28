@@ -12,3 +12,10 @@
         display: block;
     }
 }
+.Arabic {
+  font-family: 'Lateef', cursive;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}

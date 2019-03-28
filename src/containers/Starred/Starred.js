@@ -34,7 +34,7 @@ class Starred extends Component {
                 <h1>Here's your favorite Quotes</h1>
                 {
                     this.props.starred.map(quote => {
-                        return <li style={{lineHeight: "2em", fontFamily: 'Cinzel, serif', margin: "20px", padding: "20px", fontWeight: "700"}} key={quote}>{quote}</li>
+                        return <li className="Arabic" style={{lineHeight: "2em", fontFamily: 'Cinzel, serif', margin: "20px", padding: "20px", fontWeight: "700"}} key={quote}>{quote}</li>
                     })
                 }
             </div>

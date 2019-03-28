@@ -38,7 +38,7 @@ class TemporaryDrawer extends React.Component {
           
 
           <ListItem button>
-            <Menu items={['Sign In', 'Sign Up']} onLangChange={this.props.onLangChange} join={true}/>
+            <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>
           </ListItem>
 
           <ListItem button>

@@ -36,7 +36,7 @@ class ArabicQuotes extends Component {
         const lastUp = this.props.xikmado;
         
         let o = []
-        for (let i = 1; i < 5; i++) {
+        for (let i = 1; i < 10; i++) {
           const j = 'Quote' + i.toString();
           o.push(lastUp[j])
         }
@@ -104,7 +104,7 @@ class ArabicQuotes extends Component {
                 <React.Fragment>
       
                   <ErrorBoundry>
-                    <div className="tc App" >
+                    <div className="tc App Arabic" >
                     
                     
                     <Scroll currentBackgroudn={this.state.currentBackgroud}>

@@ -47,15 +47,15 @@ class Machine extends Component {
    clickHandlerMethod = () => {
     const lastUp = this.props.xikmado;
     
-    let o = []
+    let quotes = []
     for (let i = 1; i < 22; i++) {
-      const j = 'Quote' + i.toString();
+      const quotesInfo = 'Quote' + i.toString();
     
-      o.push(lastUp[j])
+      quotes.push(lastUp[quotesInfo])
     }
     
     
-    this.setState({current: o[Math.floor(Math.random() * o.length)]})
+    this.setState({current: quotes[Math.floor(Math.random() * quotes.length)]})
     
     setTimeout(() => {
       this.setState({currentBackgroud: this.state.current.background})
@@ -121,12 +121,8 @@ class Machine extends Component {
                     icon="stars"
                     starred={this.props.starred}
                     clicked={this.props.star}/>
-                    {/* <Audio /> */}
-                  { this.state.current ? 
-                    <Button click={this.clickHandlerMethod}>New One</Button>:
-                    <Button click={this.clickHandlerMethod}>Start it</Button>
                     
-                  }
+                  <Button size="lg" color="success" style={{padding: "25px"}} onClick={this.clickHandlerMethod}>{this.state.current ? "New One" : "Start it"}</Button>
                   <Icons />
                 </Modal>
                 </Scroll>

@@ -7,3 +7,5 @@ export const REQUEST_QUOTE_FAILURE = 'REQUEST_QUOTE FAILURE'
 export const LANG_CHANGE = 'LANG_CHANGE'
 
 export const DARK_MODE = "DARK_MODE"
+
+export const STORE_AUTH = 'STORE_AUTH'

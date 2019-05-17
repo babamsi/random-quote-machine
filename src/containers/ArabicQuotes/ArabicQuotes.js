@@ -115,12 +115,7 @@ class ArabicQuotes extends Component {
                           icon="stars"
                           starred={this.props.starred}
                           clicked={this.props.star}/>
-                         { this.state.current ? 
-                          <Button click={this.clickHandlerMethod}>New One</Button>:
-                          <Button click={this.clickHandlerMethod}>Start it</Button>
-                    
-                          }
-                        
+                         <Button size="lg" color="success" style={{padding: "25px"}} onClick={this.clickHandlerMethod}>{this.state.current ? "New One" : "Start it"}</Button>
                         <Icons />
                       </Modal>
                       </Scroll>

@@ -9,3 +9,7 @@ darkMode
 export {
     langChange
 } from './lang'
+
+export {
+    storeAuth
+} from './auth'

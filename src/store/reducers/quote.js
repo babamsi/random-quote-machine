@@ -53,29 +53,3 @@ export const reducerStar = (state = initialStateStar, action = {}) => {
         }
     
 }
-
-
-// export const quotesReducer = (state = initialStateQuote, action = {}) => {
-//     switch(action.type) {
-//         case actionType.REQUEST_QUOTE_PENDING:
-//             return {
-//                 ...state,
-//                 isPending: true
-//             }
-//         case actionType.REQUEST_QUOTE_SUCCESS: 
-//             return {
-//                 ...state,
-//                 xikmado: action.payload,
-//                 isPending: false
-//             }
-//         case actionType.REQUEST_QUOTE_FAILURE:
-//             return {
-//                 ...state,
-//                 err: action.payload
-//             }
-//         default:
-//             return {
-//                 state
-//             }
-//     }
-// }

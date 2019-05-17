@@ -19,6 +19,7 @@ class Starred extends Component {
       }
     render() {
         return (
+            <React.Fragment>
             <div className="tc">
             <Bar 
                 saveStarred={() => this.props.history.push('/')} 
@@ -38,6 +39,8 @@ class Starred extends Component {
                     })
                 }
             </div>
+            
+            </React.Fragment>
         )
     }
 }

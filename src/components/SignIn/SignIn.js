@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+import * as actions from '../../store/actions/index'
+import { connect } from 'react-redux'
 class Signing extends Component {
 	state = {
 		email: '',
@@ -10,13 +13,15 @@ class Signing extends Component {
 			email: this.state.email,
 			password: this.state.password
 		}).then(response => {
-				// if(response.status === 200) {
-				// 	return this.setState({auth: true})
-				// }
-				console.log(response.data)
+				if(response.status === 200) {
+					this.props.onAuth(response.data.token)
+				}
 			})
 	}
 	render() {
+		if(this.props.auth) {
+			return <Redirect to="/" />
+		}
 			return (
 				<article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
 					<main className="pa4 black-80">
@@ -83,4 +88,11 @@ class Signing extends Component {
 // 		return 
 // }
 
-export default Signing
+const mapStateToProps = state => ({
+	auth: state.auth.auth
+})
+const mapDispatchToProps = dispatch => ({
+	onAuth: (auth) => dispatch(actions.storeAuth(auth))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signing)

@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '../Menu/Menu'
 import menu from '../../assets/Images/menu.png'
-
+import { connect } from 'react-redux'
 
 const styles = {
   list: {
@@ -31,14 +31,25 @@ class TemporaryDrawer extends React.Component {
 
   render() {
     
-
+    
     const sideList = (
       <div >
         <List>
           
 
           <ListItem button>
-            <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>
+            {!this.props.auth ? <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>:
+            null}
+          </ListItem>
+
+          <ListItem button>
+            {this.props.auth ? <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Create Your Quote</p>}/>:
+          null}
+          </ListItem>
+
+          <ListItem button>
+            {this.props.auth ? <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Your Profile</p>}/>:
+          null}
           </ListItem>
 
           <ListItem button>
@@ -75,4 +86,8 @@ TemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TemporaryDrawer);
+const mapStateToProps = state => ({
+	auth: state.auth.auth
+})
+
+export default connect(mapStateToProps)(withStyles(styles)(TemporaryDrawer));

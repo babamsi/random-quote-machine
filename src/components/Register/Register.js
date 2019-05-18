@@ -7,8 +7,7 @@ class Register extends Component {
 	state = {
 		email: '',
 		name: '',
-		password: '',
-		auth: false
+		password: ''
 	}
 	 
 	sendUser = () => {

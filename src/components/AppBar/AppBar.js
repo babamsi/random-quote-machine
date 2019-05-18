@@ -148,9 +148,17 @@ class PrimarySearchAppBar extends React.Component {
       >
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
-            <Star />
+            {
+              this.props.now === 'Starred' ? <Star /> :
+              <Home />
+            
+            }
           </IconButton>
-          <p>Starred</p>
+          {
+            this.props.now === 'Starred' ? <p 
+            onClick={this.props.saveStarred}>Starred</p> : <p
+            onClick={this.props.saveStarred}>Home</p>
+          }
         </MenuItem>
 
         <MenuItem onClick={this.handleProfileMenuOpen}>

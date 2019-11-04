@@ -4,6 +4,10 @@ import {Redirect} from 'react-router-dom'
 import * as actions from '../../store/actions/index'
 import { connect } from 'react-redux'
 class Signing extends Component {
+	componentDidMount() {
+		console.log(this.props);
+		
+	}
 	state = {
 		email: '',
 		password: ''

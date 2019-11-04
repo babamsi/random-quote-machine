@@ -3,7 +3,7 @@ onquoteRequest,
 starred,
 onSomaliQuoteReq,
 onArabicQuoteReq,
-darkMode
+darkMode,
 } from './action'
 
 export {

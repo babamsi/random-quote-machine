@@ -7,6 +7,7 @@ import Arabic from './containers/ArabicQuotes/ArabicQuotes'
 import Somali from './containers/SomaliQuotes/SomaliQuotes'
 import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
+import Profile from './components/profilePage/profilepage'
 import './App.css'
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                         <Route path="/About" component={AboutMe} />
                         <Route path="/Arabic" component={Arabic} />
                         <Route path="/Somali" component={Somali} />
+                        <Route path="/profile" component={Profile} />
                     </Switch>
                 </div>
             

@@ -95,6 +95,7 @@ class Machine extends Component {
           saveStarred={() => this.props.history.push('/starred')} 
           now="Starred"
           mySelf={() => this.props.history.push('/About')}
+          toProfile={() => this.props.history.push('/profile')}
           onLangChange={(data) => {this.props.onLangChange(data); this.onLangChange()}}
           items={['Somali', 'Arabic']}
           lang={this.props.lang}
@@ -125,6 +126,7 @@ class Machine extends Component {
                   <Button size="lg" color="success" style={{padding: "25px"}} onClick={this.clickHandlerMethod}>{this.state.current ? "New One" : "Start it"}</Button>
                   <Icons />
                 </Modal>
+                <p>{this.props.name}</p>
                 </Scroll>
                 </div>
                 </ErrorBoundry></React.Fragment>:
@@ -142,13 +144,13 @@ const mapStateToProps = state => ({
   xikmado: state.quote.xikmado,
   starred: state.quote.starred,
   lang: state.lang.lang.textContent,
-  dark: state.quote.dark
+  dark: state.quote.dark,
 })
 const mapDispatchToProps = (dispatch) => ({
   req: () => actions.onquoteRequest(dispatch),
   star: (text) => dispatch(actions.starred(text)),
   onLangChange: (lang) => dispatch(actions.langChange(lang)),
-  onChangeToModes: () => dispatch(actions.darkMode())
+  onChangeToModes: () => dispatch(actions.darkMode()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withError(Machine, axios))

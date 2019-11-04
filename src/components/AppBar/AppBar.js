@@ -192,6 +192,7 @@ class PrimarySearchAppBar extends React.Component {
                 saveStarred={this.props.saveStarred}
                 now={this.props.now}
                 mySelf={this.props.mySelf}
+                toProfile={this.props.toProfile}
                 onLangChange={this.props.onLangChange}
                 items={this.props.items}
                 lang={this.props.lang}/>

@@ -9,6 +9,7 @@ import Menu from '../Menu/Menu'
 import menu from '../../assets/Images/menu.png'
 import { connect } from 'react-redux'
 
+
 const styles = {
   list: {
     width: 250,
@@ -19,8 +20,11 @@ const styles = {
 };
 
 class TemporaryDrawer extends React.Component {
+
+  
+
   state = {
-    left: false,
+    left: false
   };
 
   toggleDrawer = (side, open) => () => {
@@ -31,26 +35,29 @@ class TemporaryDrawer extends React.Component {
 
   render() {
     
-    
+    const authenticated = (
+      <React.Fragment>
+      <ListItem button>
+            <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Create Your Quote</p>}/>
+          </ListItem>
+          
+        <ListItem button>
+          <ListItemText primary={<p onClick={this.props.toProfile} style={{color: "black", margin: "10px", textDecoration: "none"}}>Your Profile</p>}/>
+        </ListItem>
+        </React.Fragment>
+    )
     const sideList = (
       <div >
         <List>
           
-
-          <ListItem button>
-            {!this.props.auth ? <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>:
-            null}
+          {
+            !this.props.auth && <ListItem button>
+            <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>
           </ListItem>
-
-          <ListItem button>
-            {this.props.auth ? <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Create Your Quote</p>}/>:
-          null}
-          </ListItem>
-
-          <ListItem button>
-            {this.props.auth ? <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Your Profile</p>}/>:
-          null}
-          </ListItem>
+          }
+          
+         
+          {this.props.auth && <div>{authenticated}</div>}
 
           <ListItem button>
             <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>About Me</p>}/>

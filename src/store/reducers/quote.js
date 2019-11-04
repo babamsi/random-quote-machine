@@ -5,7 +5,8 @@ const initialStateStar = {
     isPending: false,
     err: '',
     starred: [],
-    dark: false
+    dark: false,
+    name: ''
 }
 
 export const reducerStar = (state = initialStateStar, action = {}) => {
@@ -48,6 +49,7 @@ export const reducerStar = (state = initialStateStar, action = {}) => {
                     ...state,
                     dark: !state.dark
                 }
+            
             default:
                 return state
         }

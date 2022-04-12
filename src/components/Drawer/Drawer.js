@@ -5,9 +5,12 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Menu from '../Menu/Menu'
+
+import RegularButton from '../Button/Button'
 import menu from '../../assets/Images/menu.png'
 import { connect } from 'react-redux'
+import {auth} from '../../firebase.util'
+import {SignInWithGoogle} from '../../firebase.util'
 
 
 const styles = {
@@ -38,12 +41,10 @@ class TemporaryDrawer extends React.Component {
     const authenticated = (
       <React.Fragment>
       <ListItem button>
-            <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>Create Your Quote</p>}/>
+            <ListItemText primary={<a href='/profile' style={{color: "black", margin: "10px", textDecoration: "none"}}>Create Your Quote</a>}/>
           </ListItem>
           
-        <ListItem button>
-          <ListItemText primary={<p onClick={this.props.toProfile} style={{color: "black", margin: "10px", textDecoration: "none"}}>Your Profile</p>}/>
-        </ListItem>
+        
         </React.Fragment>
     )
     const sideList = (
@@ -52,17 +53,22 @@ class TemporaryDrawer extends React.Component {
           
           {
             !this.props.auth && <ListItem button>
-            <Menu items={['SignIn', 'SignUp']} onLangChange={this.props.onLangChange} join={true}/>
+            <ListItemText primary={<p onClick={() => SignInWithGoogle()} style={{color: "black", margin: "10px", textDecoration: "none"}}>Authenticate</p>}/>
           </ListItem>
           }
           
          
           {this.props.auth && <div>{authenticated}</div>}
 
-          <ListItem button>
-            <ListItemText primary={<p onClick={this.props.mySelf} style={{color: "black", margin: "10px", textDecoration: "none"}}>About Me</p>}/>
-          </ListItem>
+          
+          {this.props.auth && <div onClick={() => auth.signOut()}><RegularButton 
+          size="sm" block simple fullWidth round color="primary"
+          >Signout</RegularButton></div>}
+          
 
+          {/* <ListItem button>
+            <ListItemText primary={<p onClick={() => auth.signOut()} style={{color: "black", margin: "10px", textDecoration: "none"}}>Signout</p>}/>
+          </ListItem> */}
         </List>
       </div>
     );

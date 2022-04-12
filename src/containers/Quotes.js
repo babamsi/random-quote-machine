@@ -94,8 +94,9 @@ class Machine extends Component {
         <Bar 
           saveStarred={() => this.props.history.push('/starred')} 
           now="Starred"
-          mySelf={() => this.props.history.push('/About')}
-          toProfile={() => this.props.history.push('/profile')}
+          // mySelf={() => this.props.history.push('/About')}
+          // toProfile={() => this.props.history.push('/profile')}
+          // authenticate={() => this.props.history.push('authenticate')}
           onLangChange={(data) => {this.props.onLangChange(data); this.onLangChange()}}
           items={['Somali', 'Arabic']}
           lang={this.props.lang}

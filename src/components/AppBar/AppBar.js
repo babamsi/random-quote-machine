@@ -191,8 +191,9 @@ class PrimarySearchAppBar extends React.Component {
               <TemporaryDrawer 
                 saveStarred={this.props.saveStarred}
                 now={this.props.now}
-                mySelf={this.props.mySelf}
-                toProfile={this.props.toProfile}
+                // mySelf={this.props.mySelf}
+                // toProfile={this.props.toProfile}
+                // authenticate={this.props.authenticate}
                 onLangChange={this.props.onLangChange}
                 items={this.props.items}
                 lang={this.props.lang}/>
